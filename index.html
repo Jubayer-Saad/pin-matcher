@@ -12,47 +12,84 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pin-generator half-width">
-                    <input class="form-control" type="text">
-                    <button class="generate-btn">Generate Pin</button>
+                    <!-- <input id="generate-value" class="form-control" type="text"> -->
+                    <span id="generate-value" class=" form-control"></span>
+                    <button id="generate-btn" class="generate-btn">Generate Pin</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-section half-width">
-                    <input class="form-control" type="text">
+                    <form name="calculator">
+                    <input id="input-value" class="form-control" name="answer"  type="text">
                     <div class="numbers">
                         <div class="calc-body">
                             <div class="calc-button-row">
-                              <div class="button">7</div>
-                              <div class="button">8</div>
-                              <div class="button">9</div>
+                                <input class="button" type="button" value=" 7 " onclick="calculator.answer.value += '7'" />
+                                <input class="button" type="button" value=" 8 " onclick="calculator.answer.value += '8'" />
+                                <input class="button" type="button" value=" 9 " onclick="calculator.answer.value += '9'" />
                             </div>
                             <div class="calc-button-row">
-                              <div class="button">4</div>
-                              <div class="button">5</div>
-                              <div class="button">6</div>
+                                <input class="button" type="button" value=" 4 " onclick="calculator.answer.value += '4'" />
+                                <input class="button" type="button" value=" 5 " onclick="calculator.answer.value += '5'" />
+                                <input class="button" type="button" value=" 6 " onclick="calculator.answer.value += '6'" />
                             </div>
                             <div class="calc-button-row">
-                              <div class="button">1</div>
-                              <div class="button">2</div>
-                              <div class="button">3</div>
+                              <input  class="button" type="button" value=" 1 " onclick="calculator.answer.value += '1'" />
+                              <input  class="button" type="button" value=" 2 " onclick="calculator.answer.value += '2'" />
+                              <input  class="button" type="button" value=" 3 " onclick="calculator.answer.value += '3'" />
                             </div>
                             <div class="calc-button-row">
-                                <div class="button"><</div>
-                                <div class="button">0</div>
-                                <div class="button">C</div>
+                                <div class="button" ><</div>
+                                <input class="button" type="button" value=" 0 " onclick="calculator.answer.value += '0'" />
+                                <input class="button" type="button" value=" c " onclick="calculator.answer.value = ''" />
                             </div>
                             <div>
-                                <button type="submit" class="submit-btn">Submit</button>
+                                <!-- <button id="submit"  type="submit" class="submit-btn">Submit</button> -->
+                                <input type="button" class="submit-btn" value=" Submit "  id="submit" />
                                 <p class="action-left">3 try left</p>
                             </div>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
         <div class="notify-section">
-            <p class="notify">❌ Pin Didn't Match, Please try again</p>
-            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+            <p id="pin-not-match" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="pin match" class="notify">✅ Pin Matched... Secret door is opening for you</p>
         </div>
     </div>
+   
+    <script>
+         document.getElementById('pin-not-match').style.display = 'none';
+        document.getElementById('pin match').style.display = 'none';
+        
+
+        document.getElementById('generate-btn').addEventListener('click', function(){
+            const generateRandom = (Math.random() * 9999);
+            const generateRandomNumber = Math.round(generateRandom);
+            if (generateRandomNumber > 1000) {
+                document.getElementById('generate-value').innerHTML = generateRandomNumber;
+                return generateRandomNumber;
+            }  
+             
+        })
+         
+        
+
+                 document.getElementById('submit').addEventListener('click', function(){
+                     const calculatorValue = document.getElementById('input-value')
+                     const calculatorNewValue = parseInt(calculatorValue.value);
+                     const generateValue = document.getElementById('generate-value').innerText;
+                     if(calculatorNewValue == generateValue){
+                        document.getElementById('pin-not-match').style.display = 'none';
+                        document.getElementById('pin match').style.display = 'block';
+                     }
+                     else if(calculatorNewValue != generateValue){
+                        document.getElementById('pin-not-match').style.display = 'block';
+                        document.getElementById('pin match').style.display = 'none';
+                     }
+                 })
+
+    </script>
 </body>
 </html>

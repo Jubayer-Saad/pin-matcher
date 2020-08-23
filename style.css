@@ -32,7 +32,8 @@ body {
     box-shadow: none;
 }
 
-input[type='text']{
+/* input[type='text'] */
+.form-control{
     background-color: #3D4153;
     padding: 10px 0px;
     color: #ffffff;
@@ -42,7 +43,8 @@ input[type='text']{
     height: 50px;
     padding: 10px;
 }
-input[type='text']:focus {
+/* input[type='text'] */
+.form-control:focus {
     background-color: #3D4153;
     color: #fff;
     font-size: 20px;
@@ -61,7 +63,6 @@ color: #fff;
 .calc-button-row {
 width: 100%;
 }
-
 .button {
 width: 20%;
 background: #425062;
