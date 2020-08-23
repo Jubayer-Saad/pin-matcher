@@ -12,7 +12,6 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pin-generator half-width">
-                    <!-- <input id="generate-value" class="form-control" type="text"> -->
                     <span id="generate-value" class=" form-control"></span>
                     <button id="generate-btn" class="generate-btn">Generate Pin</button>
                 </div>
@@ -39,12 +38,11 @@
                               <input  class="button" type="button" value=" 3 " onclick="calculator.answer.value += '3'" />
                             </div>
                             <div class="calc-button-row">
-                                <div class="button" ><</div>
+                                <div class="button btn" onclick="removedLastItem()" ><</div>
                                 <input class="button" type="button" value=" 0 " onclick="calculator.answer.value += '0'" />
-                                <input class="button" type="button" value=" c " onclick="calculator.answer.value = ''" />
+                                <input class="button btn" type="button" value=" C " onclick="calculator.answer.value = ''" />
                             </div>
                             <div>
-                                <!-- <button id="submit"  type="submit" class="submit-btn">Submit</button> -->
                                 <input type="button" class="submit-btn" value=" Submit "  id="submit" />
                                 <p class="action-left">3 try left</p>
                             </div>
@@ -75,7 +73,6 @@
         })
          
         
-
                  document.getElementById('submit').addEventListener('click', function(){
                      const calculatorValue = document.getElementById('input-value')
                      const calculatorNewValue = parseInt(calculatorValue.value);
@@ -89,6 +86,16 @@
                         document.getElementById('pin match').style.display = 'none';
                      }
                  })
+
+
+                // remove last item
+                 function removedLastItem() {
+                 const removedItem = document.getElementById('input-value').value;
+                 let numToString = removedItem.toString(removedItem.length);
+                 numToString = numToString.slice(0, -1);
+                 document.getElementById('input-value').value = numToString;
+                 return numToString;
+                 }
 
     </script>
 </body>
